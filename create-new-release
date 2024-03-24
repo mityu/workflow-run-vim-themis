@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function print_error() {
+	printf "\033[41m$@\033[m\n"
+}
+
+if (( $(git status --short | wc -l) != 0 )); then
+	print_error "There're uncommited changes or files."
+	exit 1
+elif [[ $(git branch --show-current) != 'main' ]]; then
+	print_error 'Not on main branch.'
+	exit 1
+fi
+
+tag="v$(date '+%Y%m%d')"
+git tag $tag
+git show $tag
+echo "\$ git push --tags to publish tags."
+echo "\$ git tag -d $tag to revert this tag creation."
