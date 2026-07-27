@@ -20,7 +20,7 @@ jobs:
   run-themis-tests:
     runs-on: ${{ inputs.os }}
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Setup Vim
         id: vim
         uses: thinca/action-setup-vim@40587a4deeeaf61ef8086bd3badd42e734a67093 # v3.0.2
@@ -32,7 +32,7 @@ jobs:
         run: |
           ${{ steps.vim.outputs.executable }} --version
       - name: Setup themis.vim
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: thinca/vim-themis
           path: themis
